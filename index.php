@@ -77,21 +77,21 @@ https://templatemo.com/tm-611-maison-doree
             </div>
         </div>
         <div class="hero-image">
-            <div class="hero-slide active" data-title="Serpentine Collection" data-price="From $2,400">
-                <img src="images/maison-hero-01.jpg" 
+            <div class="hero-slide active" data-title="Serpentine Collection">
+                <img src="images/Clive_christian_perfume.jpg" 
                      alt="Serpentine gold jewelry collection">
             </div>
-            <div class="hero-slide" data-title="Aurora Pendant" data-price="From $4,850">
-                <img src="images/maison-hero-02.jpg" 
-                     alt="Aurora gold pendant necklace">
+            <div class="hero-slide" data-title="Roja perfumes">
+                <img src="images/Roja_Perfumes.jpg" 
+                     alt="Roja perfumes collection">
             </div>
-            <div class="hero-slide" data-title="Heritage Rings" data-price="From $3,200">
-                <img src="images/maison-hero-03.jpg" 
-                     alt="Heritage gold ring collection">
+            <div class="hero-slide" data-title="Xerjoff perfumes">
+                <img src="images/Xerjoff_perfumes.jpg" 
+                     alt="Xerjoff perfumes collection">
             </div>
             <div class="hero-image-overlay">
                 <p class="overlay-title" id="heroTitle">Serpentine Collection</p>
-                <p class="overlay-price" id="heroPrice">From $2,400</p>
+                <p class="overlay-price" id="heroPrice"></p>
             </div>
         </div>
     </section>
@@ -103,7 +103,7 @@ https://templatemo.com/tm-611-maison-doree
                 <div class="featured-image-wrapper">
                     <div class="featured-image">
                         <img src="images/maison-hero-02.jpg" 
-                             alt="Handcrafted gold necklace">
+                             alt="Roja Perfumes">
                     </div>
                     <div class="featured-badge">New Arrival</div>
                 </div>
@@ -139,17 +139,6 @@ https://templatemo.com/tm-611-maison-doree
             </div>
         </div>
     </section>
-    
-
-
-
-
-
-
-
-
-
-
     <!-- Footer -->
     <?php include 'partials/footer.php'; ?>
     <script src="templatemo-maison-doree.js"></script>

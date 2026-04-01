@@ -72,7 +72,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Hero image slideshow
 const slides = document.querySelectorAll('.hero-slide');
 const heroTitle = document.getElementById('heroTitle');
-const heroPrice = document.getElementById('heroPrice');
 let currentSlide = 0;
 
 function changeSlide() {
@@ -81,15 +80,13 @@ function changeSlide() {
 
    // Fade out text
    heroTitle.style.opacity = '0';
-   heroPrice.style.opacity = '0';
 
    setTimeout(() => {
       heroTitle.textContent = slides[currentSlide].dataset.title;
-      heroPrice.textContent = slides[currentSlide].dataset.price;
-      heroTitle.style.opacity = '1';
-      heroPrice.style.opacity = '1';
-   }, 500);
 
+      heroTitle.style.opacity = '1';
+ 
+   }, 500);
    slides[currentSlide].classList.add('active');
 }
 
