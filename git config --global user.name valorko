@@ -1,0 +1,26 @@
+[33mcommit 8f30b3739c5e23b53d788cafe6ac7ec7c87b9358[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: valorator <beniak.david22@gmail.com>
+Date:   Thu Apr 9 11:15:47 2026 +0200
+
+    minor changes
+
+[33mcommit c03d3c9b1ed2878a1788239e443305a4c043d22a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: valorko <234394603+valor113@users.noreply.github.com>
+Date:   Wed Apr 1 23:40:06 2026 +0200
+
+    chore: clean up empty code change sections in the changes log
+
+[33mcommit 13c9fdbf939a94fc74d4b679e7b30320a46aca57[m
+Author: valorko <234394603+valor113@users.noreply.github.com>
+Date:   Mon Mar 30 22:03:36 2026 +0200
+
+    Add styles and JavaScript for Maison Doree template
+    
+    - Create a new CSS file for styling the template with various layout and design elements.
+    - Implement JavaScript for header scroll effect, mobile navigation, smooth scrolling for anchor links, hero image slideshow, form submission handling, and scroll animations using Intersection Observer.
+
+[33mcommit 1203ab042afab995a01a0632d6848c9b8ff42348[m
+Author: valor113 <234394603+valor113@users.noreply.github.com>
+Date:   Mon Mar 30 22:00:52 2026 +0200
+
+    first commit
