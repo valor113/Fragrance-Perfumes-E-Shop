@@ -63,8 +63,8 @@ https://templatemo.com/tm-611-maison-doree
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/maison-hero-02.jpg" 
-                             alt="Aurora Pendant">
+                        <img src="images/image_c9888d.jpg" 
+                             alt="Emporio Armani Stronger With You Intensely perfume bottle">
                         <div class="product-badge">New</div>
                     </div>
                     <div class="product-info">
@@ -77,8 +77,8 @@ https://templatemo.com/tm-611-maison-doree
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/maison-hero-03.jpg" 
-                             alt="Heritage Ring">
+                        <img src="images/jpg.jpg" 
+                             alt="Jean Paul Gaultier Le Male Le Parfum black perfume bottle">
                         <div class="product-badge">Bestseller</div>
                     </div>
                     <div class="product-info">
@@ -91,8 +91,8 @@ https://templatemo.com/tm-611-maison-doree
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/maison-doree-01.jpg" 
-                             alt="Elegance Earrings">
+                        <img src="images/valentino.jpg" 
+                             alt="Valentino Uomo Born in Roma perfume bottle">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Elegance Earrings</h3>
@@ -104,8 +104,8 @@ https://templatemo.com/tm-611-maison-doree
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/maison-doree-02.jpg" 
-                             alt="Statement Necklace">
+                        <img src="images/versace.jpg" 
+                             alt="Versace Eros turquoise perfume bottle">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Statement Necklace</h3>
@@ -117,8 +117,8 @@ https://templatemo.com/tm-611-maison-doree
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/maison-doree-03.jpg" 
-                             alt="Heritage Bracelet">
+                        <img src="images/xerjoff.jpg" 
+                             alt="Xerjoff Naxos perfume bottle">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Heritage Bracelet</h3>
@@ -130,8 +130,8 @@ https://templatemo.com/tm-611-maison-doree
                 
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="images/maison-doree-04.jpg" 
-                             alt="Men's Cufflinks">
+                        <img src="images/ysl.jpg" 
+                             alt="Yves Saint Laurent Y black perfume bottle">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Men's Cufflinks</h3>
