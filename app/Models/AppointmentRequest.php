@@ -10,6 +10,14 @@ class AppointmentRequest
     {
     }
 
+    public function all(): array
+    {
+        $statement = $this->db->prepare('SELECT * FROM appointment_requests ORDER BY created_at DESC, id DESC');
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
     public function create(array $data): void
     {
         $statement = $this->db->prepare(

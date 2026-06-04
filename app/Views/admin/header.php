@@ -16,6 +16,7 @@ use App\Core\Auth;
             <?php if (Auth::check()): ?>
                 <nav class="admin-nav">
                     <a href="index.php">Products</a>
+                    <a href="appointments.php">Appointments</a>
                     <a href="../shop.php">View Shop</a>
                     <a href="logout.php">Logout</a>
                 </nav>
