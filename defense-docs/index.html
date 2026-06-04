@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Doree Defense Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page">
+        <header class="hero">
+            <p class="eyebrow">School PHP Project Defense</p>
+            <h1>Maison Doree Fragrance E-Shop</h1>
+            <p>This page explains the project in simple language so the author can prepare for the oral presentation.</p>
+        </header>
+
+        <section>
+            <h2>1. Project Overview</h2>
+            <p>The website is a luxury fragrance e-shop. It started as mostly static HTML, CSS, and JavaScript. It was converted into a pure PHP 8 project with MySQL/MariaDB database support.</p>
+            <p>The main dynamic entity is <strong>products</strong>. Products are shown on the shop page and managed in the administration area.</p>
+            <p>Technologies used: PHP 8, MySQL or MariaDB, PDO, sessions, HTML, CSS, and JavaScript.</p>
+        </section>
+
+        <section>
+            <h2>2. Project Structure</h2>
+            <ul>
+                <li><strong>app/Core</strong> contains the autoloader, database connection, authentication helper, and base controller.</li>
+                <li><strong>app/Controllers</strong> contains classes that handle user actions like login, product save, product delete, and appointment form submit.</li>
+                <li><strong>app/Models</strong> contains classes that communicate with database tables.</li>
+                <li><strong>app/Views/admin</strong> contains reusable admin page parts.</li>
+                <li><strong>admin</strong> contains the protected admin pages.</li>
+                <li><strong>config/database.php</strong> stores database connection settings.</li>
+                <li><strong>database/maison_doree.sql</strong> creates all tables and sample data.</li>
+                <li><strong>partials</strong> stores the shared header, footer, and mobile menu.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. OOP Explanation</h2>
+            <p>The project uses classes, namespaces, constructors, and objects. This counts as OOP because logic is grouped into objects with clear responsibilities.</p>
+            <ul>
+                <li><strong>Database</strong> creates and returns the PDO connection.</li>
+                <li><strong>Auth</strong> manages login sessions and admin protection.</li>
+                <li><strong>Product</strong> works with the products table.</li>
+                <li><strong>User</strong> finds admin users by email.</li>
+                <li><strong>ProductController</strong> validates product forms and calls the Product model.</li>
+                <li><strong>AuthController</strong> handles login and logout.</li>
+                <li><strong>AppointmentController</strong> validates and saves appointment requests.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Database Explanation</h2>
+            <p>The SQL file is located at <strong>database/maison_doree.sql</strong>. It creates the database <strong>maison_doree_shop</strong>.</p>
+            <ul>
+                <li><strong>products</strong> stores shop products, prices, images, stock, and active status.</li>
+                <li><strong>categories</strong> stores collection cards.</li>
+                <li><strong>product_categories</strong> connects products with categories.</li>
+                <li><strong>admin_users</strong> stores admin login data and password hashes.</li>
+                <li><strong>appointment_requests</strong> stores contact form submissions.</li>
+                <li><strong>hero_slides</strong> stores home page hero images.</li>
+                <li><strong>testimonials</strong> stores contact page testimonials.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>5. CRUD Explanation</h2>
+            <p>CRUD means create, read, update, and delete. In this project it is implemented for products.</p>
+            <ul>
+                <li><strong>Create</strong>: admin/create.php sends form data to ProductController, then Product::create saves it.</li>
+                <li><strong>Read</strong>: admin/index.php lists all products, and shop.php lists active products for visitors.</li>
+                <li><strong>Update</strong>: admin/edit.php loads one product and Product::update saves changes.</li>
+                <li><strong>Delete</strong>: admin/delete.php calls Product::delete.</li>
+            </ul>
+            <p>Data flow: form input goes to an admin PHP page, then to a controller, then to a model, then to the database through a prepared PDO statement. When data is displayed, it is escaped with htmlspecialchars.</p>
+        </section>
+
+        <section>
+            <h2>6. Authentication Explanation</h2>
+            <p>The admin area is protected by PHP sessions. Login is handled in admin/login.php and AuthController.</p>
+            <p>The database stores a hashed password, not the plain password. During login, password_verify compares the submitted password with the stored hash. If login succeeds, the user data is saved in $_SESSION.</p>
+            <p>Protected pages call Auth::requireAdmin. Logout is handled in admin/logout.php and clears the session.</p>
+        </section>
+
+        <section>
+            <h2>7. Security Explanation</h2>
+            <ul>
+                <li>PDO is used instead of old mysql functions.</li>
+                <li>Prepared statements help prevent SQL injection.</li>
+                <li>password_hash and password_verify protect admin passwords.</li>
+                <li>Sessions protect the admin area after login.</li>
+                <li>Basic validation checks required fields and email format.</li>
+                <li>htmlspecialchars is used through the e() helper before outputting database data.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>8. Dynamic Content</h2>
+            <p>The shop products are loaded from the products table. Collections come from categories. The home hero slides come from hero_slides. Testimonials come from testimonials. The contact form saves to appointment_requests.</p>
+        </section>
+
+        <section>
+            <h2>9. Presentation Preparation</h2>
+            <p><strong>What to say:</strong> "I converted a static fragrance website into a pure PHP project. I used OOP classes, PDO, prepared statements, MySQL tables, admin login, and CRUD for products."</p>
+            <p><strong>Question:</strong> Why did you use PDO? <strong>Answer:</strong> PDO is a modern PHP database API and works with prepared statements, which improves security.</p>
+            <p><strong>Question:</strong> Where is OOP used? <strong>Answer:</strong> In Database, Auth, model classes, and controller classes.</p>
+            <p><strong>Question:</strong> How is the admin protected? <strong>Answer:</strong> Login creates a session, and admin pages check that session before allowing access.</p>
+        </section>
+
+        <section>
+            <h2>10. Final Checklist</h2>
+            <ul class="checklist">
+                <li>PHP 8+ used</li>
+                <li>MySQL/MariaDB used</li>
+                <li>OOP used</li>
+                <li>CRUD implemented for products</li>
+                <li>Admin authentication implemented</li>
+                <li>No framework</li>
+                <li>No CMS</li>
+                <li>SQL dump included</li>
+                <li>README included</li>
+                <li>Multiple commits used</li>
+                <li>Defense documentation page included</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
