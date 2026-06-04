@@ -109,7 +109,7 @@ $old = $formResult['old'] ?? [];
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
-                    <form id="appointmentForm" method="post">
+                    <form id="appointmentRequestForm" method="post" action="contact.php#contact">
                         <div class="form-group">
                             <label class="form-label" for="name">Full Name</label>
                             <input type="text" id="name" name="name" class="form-input" value="<?= e($old['name'] ?? '') ?>" required>
@@ -134,6 +134,6 @@ $old = $formResult['old'] ?? [];
     </section>
 
     <?php include 'partials/footer.php'; ?>
-    <script src="templatemo-maison-doree.js"></script>
+    <script src="templatemo-maison-doree.js?v=appointments-2"></script>
 </body>
 </html>

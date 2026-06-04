@@ -96,9 +96,6 @@ if (slides.length > 1 && heroTitle) {
    setInterval(changeSlide, 4000);
 }
 
-// Form submission
-const form = document.getElementById('appointmentForm');
-
 // Intersection Observer for scroll animations
 const observerOptions = {
    threshold: 0.1,
