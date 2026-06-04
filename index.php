@@ -1,124 +1,101 @@
+<?php
+require __DIR__ . '/bootstrap.php';
+
+use App\Core\Database;
+use App\Models\HeroSlide;
+use App\Models\Product;
+
+$slides = [];
+$featured = null;
+$dbError = null;
+
+try {
+    $db = Database::getConnection();
+    $slides = (new HeroSlide($db))->allActive();
+    $featured = (new Product($db))->featured();
+} catch (Throwable $exception) {
+    $dbError = $exception->getMessage();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Dorée — Home</title>
-    
-    <!-- Google Fonts -->
+    <title>Maison Doree - Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
-    <!--
-
-TemplateMo 611 Maison Doree
-
-https://templatemo.com/tm-611-maison-doree
-
--->
 </head>
 <body>
-    <!-- Header -->
     <?php include 'partials/header.php'; ?>
-    
-    <!-- Mobile Navigation -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-    <nav class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" id="mobileNavClose">×</button>
-        <ul class="mobile-nav-links">
-            <li><a href="collections.php">Collections</a></li>
-            <li><a href="shop.php">Shop</a></li>
-            <li><a href="story.php">Our Story</a></li>
-            <li><a href="craftsmanship.php">Craftsmanship</a></li>
-            <li><a href="contact.php">Visit Us</a></li>
-        </ul>
-        <div class="mobile-nav-cta">
-            <a href="contact.php" class="btn-primary">Book Appointment</a>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
+    <?php include 'partials/mobile-nav.php'; ?>
+
     <section class="hero">
         <div class="hero-content">
-            <p class="text-label hero-tagline">Artisan Gold Jewelry Since 1987</p>
-            <h1 class="heading-display hero-title">
-                Where Gold<br>Becomes <em>Art</em>
-            </h1>
+            <p class="text-label hero-tagline">Luxury Fragrance Boutique</p>
+            <h1 class="heading-display hero-title">Where Scent<br>Becomes <em>Art</em></h1>
             <p class="text-body hero-description">
-                Each piece in our collection is handcrafted by master artisans, 
-                transforming the finest gold into wearable works of art that 
-                tell your unique story.
+                Discover curated perfumes from iconic houses and niche makers, selected for elegance, character, and lasting impression.
             </p>
             <div class="hero-actions">
                 <a href="collections.php" class="btn-primary">Explore Collections</a>
                 <a href="story.php" class="btn-text">Our Heritage</a>
             </div>
+            <?php if ($dbError): ?>
+                <p class="admin-alert admin-alert--error"><?= e($dbError) ?></p>
+            <?php endif; ?>
         </div>
         <div class="hero-image">
-            <div class="hero-slide active" data-title="Serpentine Collection">
-                <img src="images/Clive_christian_perfume.jpg" 
-                     alt="Serpentine gold jewelry collection">
-            </div>
-            <div class="hero-slide" data-title="Roja perfumes">
-                <img src="images/Roja_Perfumes.jpg" 
-                     alt="Roja perfumes collection">
-            </div>
-            <div class="hero-slide" data-title="Xerjoff perfumes">
-                <img src="images/Xerjoff_perfumes.jpg" 
-                     alt="Xerjoff perfumes collection">
-            </div>
+            <?php foreach ($slides as $index => $slide): ?>
+                <div class="hero-slide <?= $index === 0 ? 'active' : '' ?>" data-title="<?= e($slide['title']) ?>">
+                    <img src="<?= e($slide['image_path']) ?>" alt="<?= e($slide['image_alt']) ?>">
+                </div>
+            <?php endforeach; ?>
             <div class="hero-image-overlay">
-                <p class="overlay-title" id="heroTitle">Serpentine Collection</p>
+                <p class="overlay-title" id="heroTitle"><?= e($slides[0]['title'] ?? 'Maison Doree') ?></p>
                 <p class="overlay-price" id="heroPrice"></p>
             </div>
         </div>
     </section>
-    
-    <!-- Featured Piece -->
-    <section class="featured-piece">
-        <div class="container">
-            <div class="featured-grid">
-                <div class="featured-image-wrapper">
-                    <div class="featured-image">
-                        <img src="images/maison-hero-02.jpg" 
-                             alt="Roja Perfumes">
+
+    <?php if ($featured): ?>
+        <section class="featured-piece">
+            <div class="container">
+                <div class="featured-grid">
+                    <div class="featured-image-wrapper">
+                        <div class="featured-image">
+                            <img src="<?= e($featured['image_path']) ?>" alt="<?= e($featured['image_alt']) ?>">
+                        </div>
+                        <div class="featured-badge">Featured</div>
                     </div>
-                    <div class="featured-badge">New Arrival</div>
-                </div>
-                <div class="featured-content">
-                    <p class="text-label featured-label">Featured Piece</p>
-                    <h2 class="heading-display featured-title">
-                        Aurora Pendant
-                    </h2>
-                    <p class="text-body featured-description">
-                        Inspired by the ethereal dance of northern lights, 
-                        the Aurora Pendant captures the fluid movement of light 
-                        through hand-hammered 22-karat gold. Each surface catches 
-                        and reflects light differently, creating a mesmerizing 
-                        display of golden hues.
-                    </p>
-                    <div class="featured-details">
-                        <div class="detail-row">
-                            <span class="detail-label">Material</span>
-                            <span class="detail-value">22K Yellow Gold</span>
+                    <div class="featured-content">
+                        <p class="text-label featured-label">Featured Fragrance</p>
+                        <h2 class="heading-display featured-title"><?= e($featured['name']) ?></h2>
+                        <p class="text-body featured-description"><?= e($featured['description']) ?></p>
+                        <div class="featured-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Brand</span>
+                                <span class="detail-value"><?= e($featured['brand']) ?></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">SKU</span>
+                                <span class="detail-value"><?= e($featured['sku']) ?></span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Stock</span>
+                                <span class="detail-value"><?= (int) $featured['stock_quantity'] ?> available</span>
+                            </div>
                         </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Weight</span>
-                            <span class="detail-value">18.5 grams</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Chain Length</span>
-                            <span class="detail-value">18 inches (adjustable)</span>
-                        </div>
+                        <p class="featured-price"><?= e(money($featured['price'], $featured['currency'])) ?></p>
+                        <a href="shop.php" class="btn-primary">View in Shop</a>
                     </div>
-                    <p class="featured-price">$4,850</p>
-                    <a href="contact.php" class="btn-primary">Inquire About This Piece</a>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Footer -->
+        </section>
+    <?php endif; ?>
+
     <?php include 'partials/footer.php'; ?>
     <script src="templatemo-maison-doree.js"></script>
 </body>

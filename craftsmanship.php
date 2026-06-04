@@ -1,92 +1,60 @@
+<?php require __DIR__ . '/bootstrap.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison Dorée — Craftsmanship</title>
-    
-    <!-- Google Fonts -->
+    <title>Maison Doree - Craftsmanship</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
-    <!--
-
-TemplateMo 611 Maison Doree
-
-https://templatemo.com/tm-611-maison-doree
-
--->
 </head>
 <body>
-    <!-- Header -->
     <?php include 'partials/header.php'; ?>
-    
-    <!-- Mobile Navigation -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-    <nav class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" id="mobileNavClose">×</button>
-        <ul class="mobile-nav-links">
-            <li><a href="collections.php">Collections</a></li>
-            <li><a href="shop.php">Shop</a></li>
-            <li><a href="story.php">Our Story</a></li>
-            <li><a href="craftsmanship.php">Craftsmanship</a></li>
-            <li><a href="contact.php">Visit Us</a></li>
-        </ul>
-        <div class="mobile-nav-cta">
-            <a href="contact.php" class="btn-primary">Book Appointment</a>
-        </div>
-    </nav>
-    
-    <!-- Craftsmanship -->
+    <?php include 'partials/mobile-nav.php'; ?>
+
     <section class="craftsmanship" id="craftsmanship">
         <div class="container">
             <div class="craft-grid">
                 <div class="craft-content">
-                    <p class="text-label">The Art of Creation</p>
-                    <h2 class="heading-display craft-title">
-                        Crafted by Hand, Treasured Forever
-                    </h2>
+                    <p class="text-label">The Art of Selection</p>
+                    <h2 class="heading-display craft-title">Curated With Care, Presented With Elegance</h2>
                     <p class="text-body craft-text">
-                        Each Maison Dorée piece undergoes a meticulous journey 
-                        from concept to completion. Our artisans employ 
-                        traditional goldsmithing techniques passed down through 
-                        generations, ensuring every curve, texture, and finish 
-                        meets our exacting standards.
+                        Each fragrance is selected for character, quality, and presentation. The PHP project keeps the original visual
+                        style while making the catalogue editable through a database-backed administration area.
                     </p>
                     <ul class="craft-list text-body">
-                        <li>Hand-selected materials from ethical sources</li>
-                        <li>Traditional lost-wax casting and hand-forging</li>
-                        <li>Multiple quality inspections at every stage</li>
-                        <li>Personalized finishing and custom sizing</li>
+                        <li>Database products displayed on the shop page</li>
+                        <li>Secure admin login with hashed password</li>
+                        <li>PDO prepared statements for all database writes</li>
+                        <li>Simple OOP classes that are easy to explain</li>
                     </ul>
-                    <a href="contact.php" class="btn-primary">Commission a Custom Piece</a>
+                    <a href="contact.php" class="btn-primary">Book a Consultation</a>
                 </div>
                 <div class="craft-image-wrapper">
                     <div class="craft-image">
-                        <img src="images/maison-doree-07.jpg" 
-                             alt="Jewelry craftsmanship workshop">
+                        <img src="images/maison-doree-07.jpg" alt="Luxury fragrance display">
                     </div>
                     <div class="craft-stats">
                         <div class="stat-item">
-                            <p class="stat-number">37</p>
-                            <p class="stat-label">Years of Excellence</p>
+                            <p class="stat-number">PHP</p>
+                            <p class="stat-label">Pure Backend</p>
                         </div>
                         <div class="stat-item">
-                            <p class="stat-number">12</p>
-                            <p class="stat-label">Master Artisans</p>
+                            <p class="stat-number">PDO</p>
+                            <p class="stat-label">Database Access</p>
                         </div>
                         <div class="stat-item">
-                            <p class="stat-number">8K+</p>
-                            <p class="stat-label">Pieces Created</p>
+                            <p class="stat-number">CRUD</p>
+                            <p class="stat-label">Admin Products</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
+
     <?php include 'partials/footer.php'; ?>
     <script src="templatemo-maison-doree.js"></script>
 </body>

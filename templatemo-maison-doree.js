@@ -37,9 +37,11 @@ function closeMobileNav() {
    document.body.style.overflow = '';
 }
 
-menuToggle.addEventListener('click', openMobileNav);
-mobileNavClose.addEventListener('click', closeMobileNav);
-mobileOverlay.addEventListener('click', closeMobileNav);
+if (menuToggle && mobileNav && mobileOverlay && mobileNavClose) {
+   menuToggle.addEventListener('click', openMobileNav);
+   mobileNavClose.addEventListener('click', closeMobileNav);
+   mobileOverlay.addEventListener('click', closeMobileNav);
+}
 
 mobileNavLinks.forEach(link => {
    link.addEventListener('click', closeMobileNav);
@@ -90,15 +92,12 @@ function changeSlide() {
    slides[currentSlide].classList.add('active');
 }
 
-setInterval(changeSlide, 4000);
+if (slides.length > 1 && heroTitle) {
+   setInterval(changeSlide, 4000);
+}
 
 // Form submission
 const form = document.getElementById('appointmentForm');
-form.addEventListener('submit', function (e) {
-   e.preventDefault();
-   alert('Thank you for your inquiry! We will contact you within 24 hours to confirm your appointment.');
-   form.reset();
-});
 
 // Intersection Observer for scroll animations
 const observerOptions = {
