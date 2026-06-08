@@ -19,8 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $pageTitle = 'Login';
 require __DIR__ . '/../app/Views/admin/header.php';
 ?>
-<section class="admin-panel admin-panel--narrow">
-    <h1 class="heading-display admin-title">Admin Login</h1>
+<section class="admin-login">
+    <div class="admin-login-intro">
+        <p class="admin-eyebrow">Maison Doree</p>
+        <h1 class="heading-display admin-title">Welcome back.</h1>
+        <p>Sign in to curate your collection and manage private appointment requests.</p>
+    </div>
+    <div class="admin-panel admin-panel--narrow">
+    <p class="admin-login-label">Secure administration</p>
+    <h2 class="heading-display">Sign in</h2>
     <?php if ($error): ?>
         <p class="admin-alert admin-alert--error"><?= e($error) ?></p>
     <?php endif; ?>
@@ -33,7 +40,9 @@ require __DIR__ . '/../app/Views/admin/header.php';
             <label class="form-label" for="password">Password</label>
             <input class="form-input" type="password" id="password" name="password" required>
         </div>
-        <button class="btn-primary" type="submit">Login</button>
+        <button class="admin-button admin-button--primary admin-button--full" type="submit">Enter dashboard</button>
     </form>
+    <a class="admin-back-link" href="../index.php">&larr; Return to storefront</a>
+    </div>
 </section>
 <?php require __DIR__ . '/../app/Views/admin/footer.php'; ?>
