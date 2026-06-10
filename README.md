@@ -14,7 +14,7 @@ Maison Doree is a small PHP 8 fragrance storefront converted from a mostly stati
 ## Project Structure
 
 - `app/Core` - autoloader, PDO database connection, session authentication helpers, base controller
-- `app/Controllers` - request logic for login, product CRUD, and appointment form submissions
+- `app/Controllers` - request logic for login, product and testimonial CRUD, and appointment form submissions
 - `app/Models` - OOP model classes that work with database tables
 - `app/Views/admin` - reusable admin view files
 - `admin` - protected administration pages
@@ -76,9 +76,9 @@ Then open:
 http://localhost:8000
 ```
 
-## CRUD Entity
+## CRUD Entities
 
-The main CRUD entity is `products`.
+Products:
 
 - Create: `admin/create.php`
 - Read: `admin/index.php` and `shop.php`
@@ -86,6 +86,16 @@ The main CRUD entity is `products`.
 - Delete: `admin/delete.php`
 
 Database access uses PDO prepared statements in `app/Models/Product.php`.
+
+Testimonials:
+
+- Create: `admin/testimonial-create.php`
+- Read and reorder: `admin/testimonials.php`
+- Update: `admin/testimonial-edit.php`
+- Delete: `admin/testimonial-delete.php`
+
+Existing installations can update their seeded testimonial copy by importing
+`database/migrations/20260610_perfume_testimonials.sql`.
 
 ## Security Notes
 

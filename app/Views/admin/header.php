@@ -33,6 +33,10 @@ $isLoggedIn = Auth::check();
                         <span class="admin-nav-icon" aria-hidden="true">02</span>
                         Appointments
                     </a>
+                    <a class="<?= str_starts_with($currentPage, 'testimonial') ? 'is-active' : '' ?>" href="testimonials.php">
+                        <span class="admin-nav-icon" aria-hidden="true">03</span>
+                        Testimonials
+                    </a>
                 </nav>
                 <div class="admin-topbar-footer">
                     <a class="admin-store-link" href="../shop.php" target="_blank" rel="noopener">

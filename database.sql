@@ -268,9 +268,9 @@ INSERT INTO `section_items` (`section_id`, `label`, `value`, `sort_order`) VALUE
 
 INSERT INTO `testimonials`
 (`author_name`, `author_detail`, `quote`, `rating`, `avatar_path`, `avatar_alt`, `sort_order`) VALUES
-('Catherine W.', 'Bridal Collection', 'The attention to detail is extraordinary. My wedding set from Maison Doree is not just jewelry; it is a work of art that I will cherish forever.', 5, 'images/avatar-01.jpg', 'Catherine W.', 1),
-('Michael T.', 'Custom Design', 'Working with the design team to create a custom anniversary gift was seamless. They understood my vision and exceeded expectations.', 5, 'images/avatar-02.jpg', 'Michael T.', 2),
-('Eleanor M.', 'Heritage Collection', 'Three generations of my family have now worn pieces from Maison Doree. The quality is unmatched and each piece tells our story.', 5, 'images/avatar-03.jpg', 'Eleanor M.', 3);
+('Catherine W.', 'Wedding Day Fragrance', 'Maison Doree helped me find a luminous floral perfume for my wedding day. It lasted beautifully from the ceremony through the final dance and now brings the whole day back with one spray.', 5, 'images/avatar-01.jpg', 'Portrait of Catherine W.', 1),
+('Michael T.', 'Personal Scent Consultation', 'The fragrance consultation was thoughtful and effortless. The team listened to the notes I enjoy and introduced me to a warm amber scent that feels completely personal.', 5, 'images/avatar-02.jpg', 'Portrait of Michael T.', 2),
+('Eleanor M.', 'Heritage Fragrance Collection', 'I discovered a refined perfume with soft woods and iris that has become my everyday signature. The quality is exceptional, and I receive compliments whenever I wear it.', 5, 'images/avatar-03.jpg', 'Portrait of Eleanor M.', 3);
 
 INSERT INTO `navigation_items` (`label`, `url`, `location`, `css_class`, `sort_order`) VALUES
 ('Collections', 'collections.php', 'header', NULL, 1),

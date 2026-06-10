@@ -40,8 +40,8 @@ $old = $formResult['old'] ?? [];
         <div class="container">
             <div class="testimonials-header">
                 <p class="text-label">Client Stories</p>
-                <h2 class="heading-display testimonials-title">Treasured by Many</h2>
-                <p class="text-body testimonials-subtitle">What our clients say about their Maison Doree experience</p>
+                <h2 class="heading-display testimonials-title">Scents They Love</h2>
+                <p class="text-body testimonials-subtitle">What our clients say about their Maison Doree fragrance experience</p>
             </div>
             <div class="testimonials-grid">
                 <?php foreach ($testimonials as $testimonial): ?>
@@ -54,7 +54,11 @@ $old = $formResult['old'] ?? [];
                         <p class="testimonial-text"><?= e($testimonial['quote']) ?></p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">
-                                <img src="<?= e($testimonial['avatar_path']) ?>" alt="<?= e($testimonial['avatar_alt']) ?>">
+                                <?php if ($testimonial['avatar_path']): ?>
+                                    <img src="<?= e($testimonial['avatar_path']) ?>" alt="<?= e($testimonial['avatar_alt']) ?>">
+                                <?php else: ?>
+                                    <span aria-hidden="true"><?= e(strtoupper(substr($testimonial['author_name'], 0, 1))) ?></span>
+                                <?php endif; ?>
                             </div>
                             <div class="testimonial-info">
                                 <p class="testimonial-name"><?= e($testimonial['author_name']) ?></p>
