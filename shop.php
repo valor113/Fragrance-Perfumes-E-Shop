@@ -2,13 +2,24 @@
 require __DIR__ . '/bootstrap.php';
 
 use App\Core\Database;
+use App\Models\Category;
 use App\Models\Product;
 
 $products = [];
+$categories = [];
+$selectedCollection = trim((string) ($_GET['collection'] ?? ''));
 $dbError = null;
 
 try {
-    $products = (new Product(Database::getConnection()))->all(true);
+    $db = Database::getConnection();
+    $categories = (new Category($db))->allActive();
+    $validSlugs = array_column($categories, 'slug');
+
+    if ($selectedCollection !== '' && !in_array($selectedCollection, $validSlugs, true)) {
+        $selectedCollection = '';
+    }
+
+    $products = (new Product($db))->all(true, $selectedCollection ?: null);
 } catch (Throwable $exception) {
     $dbError = $exception->getMessage();
 }
@@ -35,16 +46,16 @@ try {
                     <h2 class="heading-display section-title">Our Shop</h2>
                     <p class="text-body section-subtitle">Discover exquisite fragrances available for purchase</p>
                 </div>
-                <div class="shop-filters">
-                    <select class="filter-select" aria-label="Filter products by collection">
-                        <option>All Collections</option>
-                        <option>Bridal</option>
-                        <option>Everyday Elegance</option>
-                        <option>Statement</option>
-                        <option>Heritage</option>
-                        <option>Men's Collection</option>
+                <form class="shop-filters" method="get" action="shop.php">
+                    <label class="sr-only" for="collection">Filter products by collection</label>
+                    <select class="filter-select" id="collection" name="collection" onchange="this.form.submit()">
+                        <option value="">All Collections</option>
+                        <?php foreach ($categories as $category): ?>
+                            <option value="<?= e($category['slug']) ?>" <?= $selectedCollection === $category['slug'] ? 'selected' : '' ?>><?= e($category['name']) ?></option>
+                        <?php endforeach; ?>
                     </select>
-                </div>
+                    <noscript><button class="btn-primary" type="submit">Apply</button></noscript>
+                </form>
             </div>
 
             <?php if ($dbError): ?>
@@ -52,6 +63,9 @@ try {
             <?php endif; ?>
 
             <div class="products-grid">
+                <?php if ($products === [] && !$dbError): ?>
+                    <p class="shop-empty">No fragrances are currently assigned to this collection. Explore another collection or view the complete shop.</p>
+                <?php endif; ?>
                 <?php foreach ($products as $product): ?>
                     <article class="product-card">
                         <div class="product-image">

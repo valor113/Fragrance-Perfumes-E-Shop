@@ -10,17 +10,33 @@ class Product
     {
     }
 
-    public function all(bool $activeOnly = false): array
+    public function all(bool $activeOnly = false, ?string $categorySlug = null): array
     {
-        $sql = 'SELECT * FROM products';
+        $sql = 'SELECT DISTINCT products.* FROM products';
+        $conditions = [];
+        $parameters = [];
 
-        if ($activeOnly) {
-            $sql .= ' WHERE is_active = 1';
+        if ($categorySlug !== null && $categorySlug !== '') {
+            $sql .= ' INNER JOIN product_categories ON product_categories.product_id = products.id
+                      INNER JOIN categories ON categories.id = product_categories.category_id';
+            $conditions[] = 'categories.slug = :category_slug';
+            $conditions[] = 'categories.is_active = 1';
+            $parameters['category_slug'] = $categorySlug;
         }
 
-        $sql .= ' ORDER BY sort_order ASC, id ASC';
+        if ($activeOnly) {
+            $conditions[] = 'products.is_active = 1';
+        }
 
-        return $this->db->query($sql)->fetchAll();
+        if ($conditions !== []) {
+            $sql .= ' WHERE ' . implode(' AND ', $conditions);
+        }
+
+        $sql .= ' ORDER BY products.sort_order ASC, products.id ASC';
+        $statement = $this->db->prepare($sql);
+        $statement->execute($parameters);
+
+        return $statement->fetchAll();
     }
 
     public function featured(): ?array

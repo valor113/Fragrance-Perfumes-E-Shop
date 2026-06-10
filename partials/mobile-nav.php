@@ -5,7 +5,7 @@
         <li><a href="collections.php">Collections</a></li>
         <li><a href="shop.php">Shop</a></li>
         <li><a href="story.php">Our Story</a></li>
-        <li><a href="craftsmanship.php">Craftsmanship</a></li>
+        <li><a href="fragrance-guide.php">Fragrance Guide</a></li>
         <li><a href="contact.php">Visit Us</a></li>
         <li><a href="admin/index.php">Admin</a></li>
     </ul>

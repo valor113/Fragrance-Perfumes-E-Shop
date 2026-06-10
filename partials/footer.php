@@ -4,7 +4,7 @@
             <div class="footer-brand">
                 <p class="footer-logo">Maison <span>Doree</span></p>
                 <p class="footer-tagline">
-                    Exquisite fragrances crafted with passion and elegance. Discover your signature scent in our curated collection of luxury perfumes.
+                    Curated fragrances chosen for character, quality, and style. Discover a scent that feels distinctly your own.
                 </p>
                 <div class="footer-contact-info">
                     <p>742 Fifth Avenue, Suite 1200</p>
@@ -18,20 +18,20 @@
                 <ul class="footer-links">
                     <li><a href="collections.php">All Collections</a></li>
                     <li><a href="shop.php">Shop</a></li>
-                    <li><a href="#">Bridal</a></li>
-                    <li><a href="#">Everyday Elegance</a></li>
-                    <li><a href="#">Statement Pieces</a></li>
-                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="shop.php?collection=floral">Floral</a></li>
+                    <li><a href="shop.php?collection=woody">Woody</a></li>
+                    <li><a href="shop.php?collection=fresh">Fresh</a></li>
+                    <li><a href="shop.php?collection=gift-sets">Gift Sets</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4 class="footer-column-title">Company</h4>
                 <ul class="footer-links">
                     <li><a href="story.php">Our Story</a></li>
-                    <li><a href="craftsmanship.php">Craftsmanship</a></li>
+                    <li><a href="fragrance-guide.php">Fragrance Guide</a></li>
                     <li><a href="contact.php">Visit Us</a></li>
-                    <li><a href="#">Custom Design</a></li>
-                    <li><a href="#">Care Guide</a></li>
+                    <li><a href="collections.php">Scent Families</a></li>
+                    <li><a href="contact.php">Scent Consultation</a></li>
                 </ul>
             </div>
             <div class="footer-column footer-about">

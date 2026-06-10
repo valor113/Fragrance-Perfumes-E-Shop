@@ -46,7 +46,7 @@ CREATE TABLE `categories` (
   `description` TEXT DEFAULT NULL,
   `image_path` VARCHAR(255) DEFAULT NULL,
   `image_alt` VARCHAR(255) DEFAULT NULL,
-  `piece_count` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+  `product_count` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
   `is_active` TINYINT(1) NOT NULL DEFAULT 1,
   `sort_order` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -211,15 +211,21 @@ INSERT INTO `pages` (`id`, `slug`, `title`, `meta_description`, `template_file`,
 (2, 'collections', 'Maison Doree - Collections', 'Browse perfume and fragrance collections.', 'collections.php', 2),
 (3, 'shop', 'Maison Doree - Shop', 'Shop curated luxury fragrances and perfumes.', 'shop.php', 3),
 (4, 'story', 'Maison Doree - Our Story', 'Learn about the Maison Doree heritage.', 'story.php', 4),
-(5, 'craftsmanship', 'Maison Doree - Craftsmanship', 'Discover the art behind Maison Doree creations.', 'craftsmanship.php', 5),
+(5, 'fragrance-guide', 'Maison Doree - Fragrance Guide', 'Choose perfume by scent family, mood, occasion, concentration, and personal style.', 'fragrance-guide.php', 5),
 (6, 'contact', 'Maison Doree - Contact', 'Request an appointment or visit the atelier.', 'contact.php', 6);
 
-INSERT INTO `categories` (`id`, `slug`, `name`, `description`, `image_path`, `image_alt`, `piece_count`, `sort_order`) VALUES
-(1, 'bridal', 'Bridal', 'Elegant pieces crafted for special occasions.', 'images/maison-hero-03.jpg', 'Bridal fragrance collection', 24, 1),
-(2, 'everyday-elegance', 'Everyday Elegance', 'Refined scents for daily wear.', 'images/maison-doree-01.jpg', 'Everyday perfume collection', 36, 2),
-(3, 'statement', 'Statement', 'Bold fragrances with memorable presence.', 'images/maison-doree-02.jpg', 'Statement perfume collection', 18, 3),
-(4, 'heritage', 'Heritage', 'Timeless signatures inspired by classic perfumery.', 'images/maison-doree-03.jpg', 'Heritage fragrance collection', 12, 4),
-(5, 'mens-collection', 'Men''s Collection', 'Sophisticated fragrances for men.', 'images/maison-doree-04.jpg', 'Men''s fragrance collection', 15, 5);
+INSERT INTO `categories` (`id`, `slug`, `name`, `description`, `image_path`, `image_alt`, `product_count`, `sort_order`) VALUES
+(1, 'floral', 'Floral', 'Petal-led perfumes ranging from airy and luminous to rich and romantic.', 'images/Roja_perfumes.jpg', 'Floral perfume collection', 1, 1),
+(2, 'woody', 'Woody', 'Grounded scents shaped by cedar, sandalwood, vetiver, and aromatic woods.', 'images/xerjoff.jpg', 'Woody perfume collection', 2, 2),
+(3, 'fresh', 'Fresh', 'Crisp citrus, aquatic, green, and aromatic fragrances with an easy brightness.', 'images/versace.jpg', 'Fresh perfume collection', 2, 3),
+(4, 'oriental', 'Amber and Oriental', 'Warm, enveloping perfumes with amber, spice, resin, and vanilla facets.', 'images/image_c9888d.jpg', 'Amber and oriental perfume collection', 1, 4),
+(5, 'gourmand', 'Gourmand', 'Comforting fragrances with delicious impressions of vanilla, cocoa, honey, and caramel.', 'images/armani.jpg', 'Gourmand perfume collection', 1, 5),
+(6, 'luxury', 'Luxury Editions', 'Distinctive compositions and elevated presentations from celebrated fragrance houses.', 'images/Clive_christian_perfume.jpg', 'Luxury perfume collection', 1, 6),
+(7, 'everyday-wear', 'Everyday Wear', 'Versatile scents selected for workdays, weekends, and effortless daily use.', 'images/ysl.jpg', 'Everyday perfume collection', 3, 7),
+(8, 'date-night', 'Date Night', 'Magnetic, warm, and expressive fragrances for evenings and close occasions.', 'images/jpg.jpg', 'Date night perfume collection', 2, 8),
+(9, 'seasonal-scents', 'Seasonal Scents', 'Fragrances chosen to complement changing weather, atmosphere, and mood.', 'images/valentino.jpg', 'Seasonal perfume collection', 2, 9),
+(10, 'bestsellers', 'Bestsellers', 'Customer favorites and enduring signatures from the Maison Doree selection.', 'images/Xerjoff_perfumes.jpg', 'Bestselling perfume collection', 4, 10),
+(11, 'gift-sets', 'Gift Sets', 'Thoughtful fragrance gifts for celebrations, milestones, and scent discovery.', 'images/maison-hero-03.jpg', 'Perfume gift set collection', 0, 11);
 
 INSERT INTO `products`
 (`id`, `sku`, `slug`, `name`, `brand`, `description`, `price`, `currency`, `image_path`, `image_alt`, `badge`, `is_featured`, `stock_quantity`, `sort_order`) VALUES
@@ -231,14 +237,12 @@ INSERT INTO `products`
 (6, 'MD-YSL-Y', 'yves-saint-laurent-y-eau-de-parfum', 'Yves Saint Laurent Y Eau de Parfum', 'Yves Saint Laurent', 'Sleek black bottle with a clean and confident scent profile.', 950.00, 'USD', 'images/ysl.jpg', 'Yves Saint Laurent Y black perfume bottle', NULL, 0, 15, 6);
 
 INSERT INTO `product_categories` (`product_id`, `category_id`) VALUES
-(1, 3),
-(1, 5),
-(2, 4),
-(2, 5),
-(3, 2),
-(4, 3),
-(5, 4),
-(6, 5);
+(1, 4), (1, 5), (1, 8), (1, 10),
+(2, 2), (2, 8), (2, 10),
+(3, 1), (3, 7), (3, 9),
+(4, 3), (4, 7), (4, 10),
+(5, 2), (5, 6), (5, 9),
+(6, 3), (6, 7), (6, 10);
 
 INSERT INTO `hero_slides` (`title`, `subtitle`, `image_path`, `image_alt`, `link_url`, `sort_order`) VALUES
 ('Serpentine Collection', NULL, 'images/Clive_christian_perfume.jpg', 'Clive Christian perfume collection', 'collections.php', 1),
@@ -247,21 +251,21 @@ INSERT INTO `hero_slides` (`title`, `subtitle`, `image_path`, `image_alt`, `link
 
 INSERT INTO `page_sections`
 (`id`, `page_id`, `section_key`, `eyebrow`, `title`, `body`, `image_path`, `image_alt`, `cta_label`, `cta_url`, `sort_order`) VALUES
-(1, 1, 'hero', 'Artisan Gold Jewelry Since 1987', 'Where Gold Becomes Art', 'Each piece in our collection is handcrafted by master artisans, transforming the finest gold into wearable works of art that tell your unique story.', NULL, NULL, 'Explore Collections', 'collections.php', 1),
-(2, 1, 'featured_piece', 'Featured Piece', 'Emporio Armani Stronger With You Intensely', 'A warm amber fragrance with an intense modern character, presented as the primary featured product of the boutique.', 'images/image_c9888d.jpg', 'Emporio Armani Stronger With You Intensely perfume bottle', 'Inquire About This Piece', 'contact.php', 2),
-(3, 2, 'collections_intro', NULL, 'Our Collections', 'Discover pieces crafted for every chapter of your story.', NULL, NULL, 'View All Collections', '#', 1),
-(4, 3, 'shop_intro', NULL, 'Our Shop', 'Discover exquisite pieces available for purchase.', NULL, NULL, NULL, NULL, 1),
-(5, 4, 'story', 'Our Heritage', 'Three Generations of Golden Mastery', 'Founded in 1987 by master goldsmith Henri Beaumont, Maison Doree has remained a family atelier dedicated to the art of fine gold jewelry. Today, our third-generation artisans continue the tradition, blending time-honored techniques with contemporary design sensibilities.', 'images/maison-doree-05.jpg', 'Goldsmith at work', NULL, NULL, 1),
-(6, 5, 'craftsmanship', 'The Art of Creation', 'Crafted by Hand, Treasured Forever', 'Each Maison Doree piece undergoes a meticulous journey from concept to completion. Our artisans employ traditional techniques passed down through generations.', 'images/maison-doree-07.jpg', 'Jewelry craftsmanship workshop', 'Commission a Custom Piece', 'contact.php', 1),
-(7, 6, 'contact', 'Visit Our Atelier', 'Experience Maison Doree', 'We invite you to visit our atelier for a personal consultation. Discover our collections in an intimate setting and work with our designers to create something truly unique.', NULL, NULL, NULL, NULL, 1);
+(1, 1, 'hero', 'Luxury Fragrance Boutique', 'Where Scent Becomes Art', 'Discover curated perfumes from iconic houses and niche makers, selected for elegance, character, and lasting impression.', NULL, NULL, 'Explore Collections', 'collections.php', 1),
+(2, 1, 'featured_fragrance', 'Featured Fragrance', 'Emporio Armani Stronger With You Intensely', 'A warm amber fragrance with an intense modern character, presented as a featured scent from the boutique.', 'images/image_c9888d.jpg', 'Emporio Armani Stronger With You Intensely perfume bottle', 'View in Shop', 'shop.php', 2),
+(3, 2, 'collections_intro', 'Find Your Fragrance', 'Perfume Collections', 'Explore scents by fragrance family, mood, occasion, and personal style.', NULL, NULL, 'Shop All Fragrances', 'shop.php', 1),
+(4, 3, 'shop_intro', NULL, 'Our Shop', 'Discover curated fragrances available for purchase.', NULL, NULL, NULL, NULL, 1),
+(5, 4, 'story', 'Our Heritage', 'Three Generations of Fragrance Curation', 'Maison Doree began as a family boutique dedicated to elegant perfumes, thoughtful selection, and personal scent consultations.', 'images/maison-doree-05.jpg', 'Curated fragrance boutique display', NULL, NULL, 1),
+(6, 5, 'fragrance_guide', 'Scent Discovery', 'Find a Fragrance That Feels Like You', 'Compare scent families, mood, occasion, concentration, longevity, and personal style with practical guidance from our curated boutique.', 'images/Roja_perfumes.jpg', 'Curated luxury perfume bottles', 'Explore Scent Families', 'collections.php', 1),
+(7, 6, 'contact', 'Visit Our Boutique', 'Experience Maison Doree', 'Visit for a personal scent consultation and discover fragrances in a relaxed, considered setting.', NULL, NULL, NULL, NULL, 1);
 
 INSERT INTO `section_items` (`section_id`, `label`, `value`, `sort_order`) VALUES
-(2, 'Material', '22K Yellow Gold', 1),
-(2, 'Weight', '18.5 grams', 2),
-(2, 'Chain Length', '18 inches (adjustable)', 3),
-(6, 'Years of Excellence', '37', 1),
-(6, 'Master Artisans', '12', 2),
-(6, 'Pieces Created', '8K+', 3),
+(2, 'Scent Family', 'Amber Gourmand', 1),
+(2, 'Concentration', 'Eau de Parfum', 2),
+(2, 'Best For', 'Evening and cool weather', 3),
+(6, 'Scent Families', 'Floral, woody, fresh, amber, gourmand', 1),
+(6, 'Choosing Well', 'Mood, occasion, concentration, and style', 2),
+(6, 'Testing Advice', 'Let the fragrance develop fully on skin', 3),
 (7, 'Address', '742 Fifth Avenue, Suite 1200, New York, NY 10019', 1),
 (7, 'Hours', 'Tuesday - Saturday, 10:00 AM to 06:00 PM; Sunday - Monday, By Appointment', 2),
 (7, 'Contact', '+1 (212) 555-1234; hello@maisondoree.com', 3);
@@ -276,7 +280,7 @@ INSERT INTO `navigation_items` (`label`, `url`, `location`, `css_class`, `sort_o
 ('Collections', 'collections.php', 'header', NULL, 1),
 ('Shop', 'shop.php', 'header', NULL, 2),
 ('Our Story', 'story.php', 'header', NULL, 3),
-('Craftsmanship', 'craftsmanship.php', 'header', NULL, 4),
+('Fragrance Guide', 'fragrance-guide.php', 'header', NULL, 4),
 ('Visit Us', 'contact.php', 'header', NULL, 5),
 ('Book Appointment', 'contact.php', 'header', 'nav-cta', 6),
 ('Instagram', '#', 'social', NULL, 1),
@@ -286,19 +290,19 @@ INSERT INTO `navigation_items` (`label`, `url`, `location`, `css_class`, `sort_o
 INSERT INTO `footer_links` (`group_title`, `label`, `url`, `sort_order`) VALUES
 ('Collections', 'All Collections', 'collections.php', 1),
 ('Collections', 'Shop', 'shop.php', 2),
-('Collections', 'Bridal', '#', 3),
-('Collections', 'Everyday Elegance', '#', 4),
-('Collections', 'Statement Pieces', '#', 5),
-('Collections', 'Men''s Collection', '#', 6),
+('Collections', 'Floral', 'shop.php?collection=floral', 3),
+('Collections', 'Woody', 'shop.php?collection=woody', 4),
+('Collections', 'Fresh', 'shop.php?collection=fresh', 5),
+('Collections', 'Gift Sets', 'shop.php?collection=gift-sets', 6),
 ('Company', 'Our Story', 'story.php', 1),
-('Company', 'Craftsmanship', 'craftsmanship.php', 2),
+('Company', 'Fragrance Guide', 'fragrance-guide.php', 2),
 ('Company', 'Visit Us', 'contact.php', 3),
-('Company', 'Custom Design', '#', 4),
-('Company', 'Care Guide', '#', 5);
+('Company', 'Scent Families', 'collections.php', 4),
+('Company', 'Scent Consultation', 'contact.php', 5);
 
 INSERT INTO `site_settings` (`setting_key`, `setting_value`) VALUES
 ('brand_name', 'Maison Doree'),
-('footer_tagline', 'Exquisite fragrances crafted with passion and elegance. Discover your signature scent in our curated collection of luxury perfumes.'),
+('footer_tagline', 'Curated fragrances chosen for character, quality, and style. Discover a scent that feels distinctly your own.'),
 ('address_line_1', '742 Fifth Avenue, Suite 1200'),
 ('address_line_2', 'New York, NY 10019'),
 ('phone', '+1 (212) 555-1234'),

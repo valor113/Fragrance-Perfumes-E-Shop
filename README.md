@@ -20,6 +20,7 @@ Maison Doree is a small PHP 8 fragrance storefront converted from a mostly stati
 - `admin` - protected administration pages
 - `config/database.php` - database connection settings
 - `database/maison_doree.sql` - schema and seed data
+- `database/migrations` - SQL updates for existing installations
 - `partials` - shared header, footer, and mobile navigation
 - `styles/style.css` - original site styling plus admin styles
 - `defense-docs` - independent documentation page for oral defense preparation
@@ -96,6 +97,9 @@ Testimonials:
 
 Existing installations can update their seeded testimonial copy by importing
 `database/migrations/20260610_perfume_testimonials.sql`.
+
+The perfume collection taxonomy and Fragrance Guide route are updated by
+`database/migrations/20260610_perfume_collections_and_fragrance_guide.sql`.
 
 ## Security Notes
 

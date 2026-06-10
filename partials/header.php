@@ -6,7 +6,7 @@
                 <a href="collections.php">Collections</a>
                 <a href="shop.php">Shop</a>
                 <a href="story.php">Our Story</a>
-                <a href="craftsmanship.php">Craftsmanship</a>
+                <a href="fragrance-guide.php">Fragrance Guide</a>
                 <a href="contact.php">Visit Us</a>
                 <a href="admin/index.php">Admin</a>
                 <a href="contact.php" class="nav-cta">Book Appointment</a>
