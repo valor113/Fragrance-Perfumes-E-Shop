@@ -170,7 +170,7 @@ a:link, a:visited, a:hover, a:active {
 .nav-main {
 	display: flex;
 	align-items: center;
-	gap: var(--space-lg);
+	gap: 1.5rem;
 }
 
 .nav-main a:not(.nav-cta) {
@@ -1038,6 +1038,86 @@ a:link, a:visited, a:hover, a:active {
 }
 
 /* ========================================
+           STOREFRONT AUTHENTICATION
+        ======================================== */
+.auth-page {
+	min-height: 100vh;
+	padding: 10rem 0 var(--space-xl);
+	background:
+		linear-gradient(105deg, rgba(255, 251, 245, 0.96), rgba(247, 243, 237, 0.9)),
+		url('../images/maison-hero-03.jpg') center / cover;
+}
+
+.auth-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+	align-items: center;
+	gap: clamp(3rem, 8vw, 8rem);
+}
+
+.auth-intro {
+	max-width: 620px;
+}
+
+.auth-intro h1 {
+	margin: 0.75rem 0 1.25rem;
+	font-size: clamp(3.5rem, 7vw, 6.5rem);
+	line-height: 0.92;
+}
+
+.auth-intro .text-body {
+	max-width: 520px;
+}
+
+.auth-card {
+	padding: clamp(2rem, 5vw, 3.5rem);
+	background: rgba(254, 252, 249, 0.98);
+	box-shadow: 0 25px 70px rgba(28, 28, 28, 0.13);
+}
+
+.auth-card .form-title {
+	font-size: 2.5rem;
+}
+
+.auth-alert {
+	margin-bottom: var(--space-md);
+	padding: 0.9rem 1rem;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+
+.auth-alert--error {
+	border: 1px solid #d9aaa2;
+	background: #fff3f0;
+	color: #8d3024;
+}
+
+.auth-switch,
+.auth-admin-link {
+	margin-top: 1.25rem;
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--color-charcoal-soft);
+}
+
+.auth-admin-link {
+	margin-top: 0.65rem;
+	font-size: 0.78rem;
+}
+
+.auth-switch a,
+.auth-admin-link a {
+	color: var(--color-gold-dark);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.nav-account-name {
+	font-size: 0.82rem;
+	color: var(--color-gold-dark);
+}
+
+/* ========================================
            FOOTER - 4 Column Layout
         ======================================== */
 .site-footer {
@@ -1356,7 +1436,7 @@ a:link, a:visited, a:hover, a:active {
 	}
 
 	.nav-main {
-		gap: var(--space-md);
+		gap: 1rem;
 	}
 
 	.nav-main a:not(.nav-cta) {
@@ -1383,6 +1463,23 @@ a:link, a:visited, a:hover, a:active {
 
 	.menu-toggle {
 		display: flex;
+	}
+
+	.auth-page {
+		padding-top: 8rem;
+	}
+
+	.auth-layout {
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
+	}
+
+	.auth-intro {
+		max-width: 520px;
+	}
+
+	.auth-intro h1 {
+		font-size: clamp(3.25rem, 12vw, 5rem);
 	}
 
 	.hero {
@@ -1515,6 +1612,18 @@ a:link, a:visited, a:hover, a:active {
 		--space-2xl: 6rem;
 	}
 
+	.auth-page {
+		padding-bottom: var(--space-lg);
+	}
+
+	.auth-card {
+		padding: 1.5rem;
+	}
+
+	.auth-intro .text-body {
+		font-size: 1rem;
+	}
+
 	.hero-actions {
 		flex-direction: column;
 		align-items: flex-start;
@@ -1609,6 +1718,14 @@ a:link, a:visited, a:hover, a:active {
 
 .mobile-nav-links a:hover {
 	color: var(--color-gold);
+}
+
+.mobile-account-name {
+	display: block;
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-gold-dark);
 }
 
 .mobile-nav-cta {
