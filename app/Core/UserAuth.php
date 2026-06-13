@@ -21,6 +21,7 @@ class UserAuth
             'id' => (int) $user['id'],
             'username' => $user['username'],
             'email' => $user['email'],
+            'phone_number' => $user['phone_number'] ?? '',
             'role' => $user['role'],
         ];
     }

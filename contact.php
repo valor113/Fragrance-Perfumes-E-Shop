@@ -3,6 +3,7 @@ require __DIR__ . '/bootstrap.php';
 
 use App\Controllers\AppointmentController;
 use App\Core\Database;
+use App\Core\UserAuth;
 use App\Models\Testimonial;
 
 $testimonials = [];
@@ -20,6 +21,11 @@ try {
 }
 
 $old = $formResult['old'] ?? [];
+$loggedInUser = UserAuth::user();
+$formName = $old['name'] ?? ($loggedInUser['username'] ?? '');
+$formEmail = $loggedInUser['email'] ?? ($old['email'] ?? '');
+$accountPhone = $loggedInUser['phone_number'] ?? '';
+$formPhone = $accountPhone !== '' ? $accountPhone : ($old['phone'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,15 +122,15 @@ $old = $formResult['old'] ?? [];
                     <form id="appointmentRequestForm" method="post" action="contact.php#contact">
                         <div class="form-group">
                             <label class="form-label" for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-input" value="<?= e($old['name'] ?? '') ?>" required>
+                            <input type="text" id="name" name="name" class="form-input" value="<?= e($formName) ?>" autocomplete="name" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="email">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-input" value="<?= e($old['email'] ?? '') ?>" required>
+                            <input type="email" id="email" name="email" class="form-input" value="<?= e($formEmail) ?>" autocomplete="email"<?= $loggedInUser ? ' readonly' : '' ?> required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" value="<?= e($old['phone'] ?? '') ?>">
+                            <input type="tel" id="phone" name="phone" class="form-input" value="<?= e($formPhone) ?>" autocomplete="tel"<?= $accountPhone !== '' ? ' readonly' : '' ?>>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="message">Tell Us About Your Visit</label>

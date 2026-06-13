@@ -14,9 +14,14 @@ class UserAuthController extends Controller
     {
         $username = trim((string) ($request['username'] ?? ''));
         $email = strtolower(trim((string) ($request['email'] ?? '')));
+        $phoneNumber = trim((string) ($request['phone_number'] ?? ''));
         $password = (string) ($request['password'] ?? '');
         $passwordConfirmation = (string) ($request['password_confirmation'] ?? '');
-        $old = ['username' => $username, 'email' => $email];
+        $old = [
+            'username' => $username,
+            'email' => $email,
+            'phone_number' => $phoneNumber,
+        ];
         $errors = [];
 
         if ($username === '') {
@@ -29,6 +34,12 @@ class UserAuthController extends Controller
             $errors[] = 'Email is required.';
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Please enter a valid email address.';
+        }
+
+        if ($phoneNumber === '') {
+            $errors[] = 'Phone number is required.';
+        } elseif (!$this->isValidPhoneNumber($phoneNumber)) {
+            $errors[] = 'Please enter a valid phone number, including the country code when applicable.';
         }
 
         if ($password === '') {
@@ -62,7 +73,12 @@ class UserAuthController extends Controller
         }
 
         try {
-            $userId = $users->create($username, $email, password_hash($password, PASSWORD_DEFAULT));
+            $userId = $users->create(
+                $username,
+                $email,
+                $phoneNumber,
+                password_hash($password, PASSWORD_DEFAULT)
+            );
         } catch (PDOException $exception) {
             if ((string) $exception->getCode() === '23000') {
                 return [
@@ -78,6 +94,7 @@ class UserAuthController extends Controller
             'id' => $userId,
             'username' => $username,
             'email' => $email,
+            'phone_number' => $phoneNumber,
             'role' => 'user',
         ]);
 
@@ -108,5 +125,16 @@ class UserAuthController extends Controller
     {
         UserAuth::logout();
         $this->redirect('index.php');
+    }
+
+    private function isValidPhoneNumber(string $phoneNumber): bool
+    {
+        if (strlen($phoneNumber) > 30 || !preg_match('/^\+?[0-9\s().-]+$/', $phoneNumber)) {
+            return false;
+        }
+
+        $digits = preg_replace('/\D/', '', $phoneNumber);
+
+        return strlen($digits) >= 7 && strlen($digits) <= 15;
     }
 }

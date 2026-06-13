@@ -62,12 +62,16 @@ $old = $formResult['old'] ?? [];
 
                 <form method="post" action="register.php">
                     <div class="form-group">
-                        <label class="form-label" for="username">Username</label>
+                        <label class="form-label" for="username">Full Name / Username</label>
                         <input class="form-input" type="text" id="username" name="username" value="<?= e($old['username'] ?? '') ?>" maxlength="50" autocomplete="username" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email">Email Address</label>
                         <input class="form-input" type="email" id="email" name="email" value="<?= e($old['email'] ?? '') ?>" maxlength="190" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone_number">Phone Number</label>
+                        <input class="form-input" type="tel" id="phone_number" name="phone_number" value="<?= e($old['phone_number'] ?? '') ?>" maxlength="30" autocomplete="tel" placeholder="+421 900 123 456" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="password">Password</label>

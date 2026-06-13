@@ -28,15 +28,16 @@ class CustomerUser
         return $user ?: null;
     }
 
-    public function create(string $username, string $email, string $passwordHash): int
+    public function create(string $username, string $email, string $phoneNumber, string $passwordHash): int
     {
         $statement = $this->db->prepare(
-            'INSERT INTO users (username, email, password_hash, role)
-             VALUES (:username, :email, :password_hash, :role)'
+            'INSERT INTO users (username, email, phone_number, password_hash, role)
+             VALUES (:username, :email, :phone_number, :password_hash, :role)'
         );
         $statement->execute([
             'username' => $username,
             'email' => $email,
+            'phone_number' => $phoneNumber,
             'password_hash' => $passwordHash,
             'role' => 'user',
         ]);

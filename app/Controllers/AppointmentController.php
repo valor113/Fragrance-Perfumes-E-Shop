@@ -4,12 +4,23 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Database;
+use App\Core\UserAuth;
 use App\Models\AppointmentRequest;
 
 class AppointmentController extends Controller
 {
     public function store(array $request): array
     {
+        $loggedInUser = UserAuth::user();
+
+        if ($loggedInUser) {
+            $request['email'] = $loggedInUser['email'];
+
+            if (($loggedInUser['phone_number'] ?? '') !== '') {
+                $request['phone'] = $loggedInUser['phone_number'];
+            }
+        }
+
         $errors = [];
 
         if (trim((string) ($request['name'] ?? '')) === '') {

@@ -211,6 +211,7 @@ CREATE TABLE `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(50) NOT NULL,
   `email` VARCHAR(190) NOT NULL,
+  `phone_number` VARCHAR(30) NOT NULL,
   `password_hash` VARCHAR(255) NOT NULL,
   `role` VARCHAR(20) NOT NULL DEFAULT 'user',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -327,11 +328,11 @@ INSERT INTO `site_settings` (`setting_key`, `setting_value`) VALUES
 INSERT INTO `admin_users` (`name`, `email`, `password_hash`) VALUES
 ('Admin User', 'admin@maisondoree.test', '$2y$10$DUk6yaIZVr5y7aAgNqpbNuTDFqWWJ.QLhosrpB01vrNn5t/e84aMe');
 
-INSERT INTO `users` (`username`, `email`, `password_hash`, `role`) VALUES
-('user1', 'user1@example.com', '$2y$10$yZ1Y03FRVBgSk0tQJNU64eLC9N52tX3boIYPRqncG9vS5oq/YhbOG', 'user'),
-('user2', 'user2@example.com', '$2y$10$FbJwQK/ESHYN8hw6NGrg8e9KnrJgm6NsaKeS/lXE2g2OBnWp3Dm92', 'user'),
-('user3', 'user3@example.com', '$2y$10$KcWBgfOTUVtWoVwIBHjhO.zLe8gIQhEKF1C04QwkzbP33Bnno2/Hq', 'user'),
-('user4', 'user4@example.com', '$2y$10$Tvjd.tvbt0l/X5Y.DXyUNeg6sNcH2G.zdJeUUGzBfnT65krXDEx6.', 'user'),
-('user5', 'user5@example.com', '$2y$10$/bs4.x3tfN5MjEugxElyAey8/zpxjogmIVLeUTU6EFl70u7n49eWu', 'user');
+INSERT INTO `users` (`username`, `email`, `phone_number`, `password_hash`, `role`) VALUES
+('user1', 'user1@example.com', '+421 900 000 001', '$2y$10$yZ1Y03FRVBgSk0tQJNU64eLC9N52tX3boIYPRqncG9vS5oq/YhbOG', 'user'),
+('user2', 'user2@example.com', '+421 900 000 002', '$2y$10$FbJwQK/ESHYN8hw6NGrg8e9KnrJgm6NsaKeS/lXE2g2OBnWp3Dm92', 'user'),
+('user3', 'user3@example.com', '+421 900 000 003', '$2y$10$KcWBgfOTUVtWoVwIBHjhO.zLe8gIQhEKF1C04QwkzbP33Bnno2/Hq', 'user'),
+('user4', 'user4@example.com', '+421 900 000 004', '$2y$10$Tvjd.tvbt0l/X5Y.DXyUNeg6sNcH2G.zdJeUUGzBfnT65krXDEx6.', 'user'),
+('user5', 'user5@example.com', '+421 900 000 005', '$2y$10$/bs4.x3tfN5MjEugxElyAey8/zpxjogmIVLeUTU6EFl70u7n49eWu', 'user');
 
 COMMIT;
