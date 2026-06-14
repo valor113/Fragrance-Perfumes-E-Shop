@@ -6,12 +6,22 @@ class Auth
 {
     public static function check(): bool
     {
-        return isset($_SESSION['admin_user']);
+        return (
+            isset($_SESSION['admin_user'])
+            && ($_SESSION['admin_user']['role'] ?? '') === 'admin'
+        ) || UserAuth::isAdmin();
     }
 
     public static function user(): ?array
     {
-        return $_SESSION['admin_user'] ?? null;
+        if (
+            isset($_SESSION['admin_user'])
+            && ($_SESSION['admin_user']['role'] ?? '') === 'admin'
+        ) {
+            return $_SESSION['admin_user'];
+        }
+
+        return UserAuth::isAdmin() ? UserAuth::user() : null;
     }
 
     public static function login(array $user): void
@@ -21,6 +31,7 @@ class Auth
             'id' => (int) $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
+            'role' => 'admin',
         ];
     }
 

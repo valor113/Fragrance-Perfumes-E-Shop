@@ -14,6 +14,11 @@ class UserAuth
         return $_SESSION['user'] ?? null;
     }
 
+    public static function isAdmin(): bool
+    {
+        return self::check() && (self::user()['role'] ?? '') === 'admin';
+    }
+
     public static function login(array $user): void
     {
         session_regenerate_id(true);

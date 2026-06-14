@@ -43,7 +43,7 @@ CREATE TABLE `pages` (
 CREATE TABLE `categories` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `slug` VARCHAR(80) NOT NULL,
-  `name` VARCHAR(120) NOT NULL,
+  `name` VARCHAR(120) NOT NULL, 
   `description` TEXT DEFAULT NULL,
   `image_path` VARCHAR(255) DEFAULT NULL,
   `image_alt` VARCHAR(255) DEFAULT NULL,

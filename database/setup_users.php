@@ -84,6 +84,24 @@ if (!$indexExists($db, 'uq_users_email')) {
     $db->exec("ALTER TABLE `users` ADD UNIQUE KEY `uq_users_email` (`email`)");
 }
 
+$db->exec(
+    "CREATE TABLE IF NOT EXISTS cart_items (
+        user_id INT UNSIGNED NOT NULL,
+        product_id INT UNSIGNED NOT NULL,
+        quantity INT UNSIGNED NOT NULL DEFAULT 1,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (user_id, product_id),
+        KEY idx_cart_items_product (product_id),
+        CONSTRAINT fk_cart_items_user
+            FOREIGN KEY (user_id) REFERENCES users (id)
+            ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT fk_cart_items_product
+            FOREIGN KEY (product_id) REFERENCES products (id)
+            ON DELETE CASCADE ON UPDATE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+);
+
 $testUsers = [
     ['username' => 'user1', 'email' => 'user1@example.com', 'phone_number' => '+421 900 000 001'],
     ['username' => 'user2', 'email' => 'user2@example.com', 'phone_number' => '+421 900 000 002'],
@@ -149,4 +167,4 @@ try {
     throw $exception;
 }
 
-echo "User database setup complete: {$created} created, {$existing} already present." . PHP_EOL;
+echo "User and cart database setup complete: {$created} users created, {$existing} already present." . PHP_EOL;

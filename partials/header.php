@@ -1,4 +1,5 @@
 <?php
+use App\Core\Auth;
 use App\Core\UserAuth;
 
 $storefrontUser = UserAuth::user();
@@ -13,8 +14,11 @@ $storefrontUser = UserAuth::user();
                 <a href="story.php">Our Story</a>
                 <a href="fragrance-guide.php">Fragrance Guide</a>
                 <a href="contact.php">Visit Us</a>
-                <a href="admin/index.php">Admin</a>
+                <?php if (Auth::check()): ?>
+                    <a href="admin/index.php">Admin</a>
+                <?php endif; ?>
                 <?php if ($storefrontUser): ?>
+                    <a href="cart.php">Cart</a>
                     <span class="nav-account-name"><?= e($storefrontUser['username']) ?></span>
                     <a href="logout.php">Logout</a>
                 <?php else: ?>

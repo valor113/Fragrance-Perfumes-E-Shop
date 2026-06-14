@@ -2,6 +2,7 @@
 require __DIR__ . '/bootstrap.php';
 
 use App\Core\Database;
+use App\Core\UserAuth;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -78,7 +79,15 @@ try {
                             <h3 class="product-name"><?= e($product['name']) ?></h3>
                             <p class="product-description"><?= e($product['description']) ?></p>
                             <p class="product-price"><?= e(money($product['price'], $product['currency'])) ?></p>
-                            <button class="btn-primary product-btn">Add to Cart</button>
+                            <form method="post" action="cart.php">
+                                <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+                                <input type="hidden" name="action" value="add">
+                                <input type="hidden" name="product_id" value="<?= (int) $product['id'] ?>">
+                                <input type="hidden" name="quantity" value="1">
+                                <button class="btn-primary product-btn" type="submit">
+                                    <?= UserAuth::check() ? 'Add to Cart' : 'Sign In to Add' ?>
+                                </button>
+                            </form>
                         </div>
                     </article>
                 <?php endforeach; ?>
