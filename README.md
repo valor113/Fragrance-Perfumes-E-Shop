@@ -19,8 +19,7 @@ Maison Doree is a small PHP 8 fragrance storefront converted from a mostly stati
 - `app/Views/admin` - reusable admin view files
 - `admin` - protected administration pages
 - `config/database.php` - database connection settings
-- `database/maison_doree.sql` - schema and seed data
-- `database/migrations` - SQL updates for existing installations
+- `database/setup.sql` - the single source of truth for schema and seed data
 - `partials` - shared header, footer, and mobile navigation
 - `styles/style.css` - original site styling plus admin styles
 - `defense-docs` - independent documentation page for oral defense preparation
@@ -28,8 +27,13 @@ Maison Doree is a small PHP 8 fragrance storefront converted from a mostly stati
 ## Database Setup
 
 1. Open phpMyAdmin from XAMPP.
-2. Import `database/maison_doree.sql`.
+2. Import `database/setup.sql`.
 3. Check `config/database.php` and update credentials if needed.
+
+Run only `database/setup.sql`. Do not run separate migrations or update
+scripts. All future database structure and seed changes belong in this file.
+The script uses `CREATE TABLE IF NOT EXISTS` and duplicate-safe seed inserts,
+so it can be rerun without creating duplicate default records.
 
 Default XAMPP settings are already configured:
 
@@ -56,6 +60,15 @@ Password: admin123
 ```
 
 The password in the database is stored with `password_hash`, and login checks it with `password_verify`.
+
+## Test Customer Accounts
+
+The setup script seeds `user1@example.com` through `user5@example.com`.
+All five customer accounts use:
+
+```text
+Password: Password123!
+```
 
 ## Run Locally
 
@@ -95,11 +108,8 @@ Testimonials:
 - Update: `admin/testimonial-edit.php`
 - Delete: `admin/testimonial-delete.php`
 
-Existing installations can update their seeded testimonial copy by importing
-`database/migrations/20260610_perfume_testimonials.sql`.
-
-The perfume collection taxonomy and Fragrance Guide route are updated by
-`database/migrations/20260610_perfume_collections_and_fragrance_guide.sql`.
+The default perfume products, collections, testimonials, administrator, and
+five regular test users are all seeded by `database/setup.sql`.
 
 ## Security Notes
 

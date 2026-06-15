@@ -31,7 +31,7 @@ class Database
                 PDO::ATTR_EMULATE_PREPARES => false,
             ]);
         } catch (PDOException $exception) {
-            throw new PDOException('Database connection failed. Check config/database.php and import database/maison_doree.sql.', (int) $exception->getCode(), $exception);
+            throw new PDOException('Database connection failed. Check config/database.php and import database/setup.sql.', (int) $exception->getCode(), $exception);
         }
 
         return self::$connection;
